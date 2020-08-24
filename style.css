@@ -1,0 +1,111 @@
+.grid {
+
+    display: flex;
+    flex-wrap: wrap;
+    width: 560px;
+    height: 560px;
+    border: solid black;
+    background-color: darkblue
+}
+
+.grid div {
+    width: 20px;
+    height: 20px;
+   }
+
+.pac-dot {
+
+  width: 5px;
+  height: 5px; *
+  background: #fff;
+  border-radius: 80%; 
+  border: 5px;
+  border: 2px solid GREEN;
+  box-sizing: border-box;
+}
+
+.wall {
+    background-color: #000;
+    color: #fff;
+}
+
+.power-pellet { 
+    background-color: green; 
+    border-radius: 10px;
+
+}
+
+.blinky{
+    background-color: red;
+    border: 0px;
+    border-radius: 100% 100% 0 0;
+
+}
+
+.pinky{
+    background-color: pink;
+    border: 0px;
+    border-radius: 100% 100% 0 0;
+}
+
+.inky{
+    background-color: cyan;
+    border: 0px;
+    border-radius: 100% 100% 0 0;
+}
+.clyde{
+    background-color: orange;
+    border: 0px;
+    border-radius: 100% 100% 0 0;
+
+}
+
+.scared-ghosts {
+     background-color: aquamarine;
+     border: 0px;
+     border-radius: 100% 100% 0 0;
+    }
+
+
+    .pac-man {
+        background-color: yellow;
+       border-radius: 10px;
+     
+    }
+
+/* .pacman__eye {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: 20px;
+    right: 40px;
+    background: #333333;
+} */
+
+.pacman-mouth {
+    background-color: #000;
+    border-radius: 10%;
+    clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+    animation-name: eat;
+    animation-duration: 0.7s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes eat {
+    0% {
+      clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+    }
+    25% {
+      clip-path: polygon(100% 60%, 44% 48%, 100% 40%);
+    }
+    50% {
+      clip-path: polygon(100% 50%, 44% 48%, 100% 50%);
+    }
+    75% {
+      clip-path: polygon(100% 59%, 44% 48%, 100% 35%);
+    }
+    100% {
+      clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+    }
+  }
