@@ -1,38 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const scoreDisplay = document.getElementById('score');
-  const width = 28;
+  const width = 29;
   let score = 0;
   const grid = document.querySelector('.grid');
   const layout = [
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-    1,3,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,3,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,
-    1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
-    1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,4,4,4,4,4,4,4,4,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,1,1,2,2,1,1,1,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
-    4,4,4,4,4,4,0,0,0,4,1,2,2,2,2,2,2,1,4,0,0,0,4,4,4,4,4,4,
-    1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,1,1,1,1,1,1,1,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,1,1,1,1,1,1,1,4,1,1,0,1,1,1,1,1,1,
-    1,0,0,0,0,0,0,0,0,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-    1,3,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,3,1,
-    1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
-    1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
-    1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1,
-    1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
-    1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
-    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,3,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,3,0,0,0,1,
+    1,0,1,1,1,0,1,0,1,0,1,1,1,0,1,0,1,1,1,1,1,1,0,1,1,0,1,0,1,
+    1,0,1,1,1,0,1,0,1,0,1,0,0,0,0,0,0,0,1,1,0,0,0,1,1,0,1,0,1,
+    1,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,1,0,1,0,1,
+    1,0,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,0,0,0,1,0,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,
+    1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,0,0,0,0,0,1,
+    1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,1,0,1,
+    1,0,1,1,1,0,1,0,1,0,1,1,1,1,1,1,1,1,1,0,1,0,1,0,0,0,0,0,1,
+    1,0,1,1,1,0,1,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,1,0,1,1,1,0,1,
+    1,0,0,0,0,0,0,0,1,0,1,1,1,4,4,4,1,1,1,0,1,0,0,0,0,0,0,0,1,
+    1,1,1,1,1,1,1,0,4,0,1,2,2,2,2,2,2,2,1,0,4,0,1,1,1,1,1,1,1,
+    5,4,4,1,1,4,4,0,1,0,1,2,2,2,2,2,2,2,1,0,1,0,1,4,4,4,4,1,1,
+    1,1,4,4,4,4,1,0,4,0,1,2,2,2,2,2,2,2,1,0,4,0,4,4,1,1,4,4,6,
+    1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,0,1,1,1,0,1,0,1,0,1,1,1,1,1,1,1,1,1,0,1,0,0,0,1,1,1,0,1,
+    1,0,1,1,1,0,1,0,1,0,1,0,0,0,4,0,0,0,1,0,1,0,1,0,0,1,1,0,1,
+    1,0,0,0,0,0,1,0,1,0,1,0,1,1,1,1,1,0,1,0,1,0,0,1,0,0,1,0,1,
+    1,0,1,1,1,1,1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,1,0,0,1,0,0,0,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,1,1,0,1,
+    1,0,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,0,0,0,1,
+    1,3,0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,1,0,0,1,3,1,0,1,
+    1,0,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,1,1,0,0,0,0,0,1,
+    1,0,1,1,1,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,1,1,1,1,0,1,
+    1,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1,0,0,0,0,1,0,0,0,0,0,0,0,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 
   ]
   // 0 - pac-dots
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2 - ghost-lair
   // 3 - power-pellet
   // 4 - empty
+  // 5 - teleport
 
   const squares = []
 
@@ -60,14 +61,22 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (layout[i] === 3) {
         squares[i].classList.add('power-pellet')
       }
+      else if (layout[i] === 5) {
+        squares[i].classList.add('teleportLeft')
+      }
+      else if (layout[i] === 6) {
+        squares[i].classList.add('teleportRight')
+      }
     }
   }
   createBoard()
 
 
-let pacmanCurrentIndex = 490
+let pacmanCurrentIndex = 536
 
 squares[pacmanCurrentIndex].classList.add('pac-man')
+
+
 
 
 function getCoordinates(index) {
@@ -80,13 +89,15 @@ function movePacman(e) {
 
 squares[pacmanCurrentIndex].classList.remove('pac-man')
 
+
+
 switch(e.keyCode) {
   case 37:
     if(pacmanCurrentIndex % width !== 0 && !squares[pacmanCurrentIndex -1].classList.contains('wall')
     && !squares[pacmanCurrentIndex -1].classList.contains('ghost-lair'))
     pacmanCurrentIndex -=1
 
-    if((pacmanCurrentIndex - 1) === 363) {pacmanCurrentIndex = 391}
+    if((pacmanCurrentIndex - 1) === 377) {pacmanCurrentIndex = 434}
     break
   case 38:
     if(pacmanCurrentIndex - width >= 0 && !squares[pacmanCurrentIndex -width].classList.contains('wall')
@@ -98,7 +109,7 @@ switch(e.keyCode) {
     && !squares[pacmanCurrentIndex % width].classList.contains('ghost-lair'))
     pacmanCurrentIndex +=1
 
-    if((pacmanCurrentIndex + 1) === 392) {pacmanCurrentIndex = 364}
+    if((pacmanCurrentIndex +1)  === 434) {pacmanCurrentIndex = 377}
     break
   case 40:
     if(pacmanCurrentIndex + width < width * width && !squares[pacmanCurrentIndex +width].classList.contains('wall')
@@ -108,6 +119,10 @@ switch(e.keyCode) {
 }
 
 squares[pacmanCurrentIndex].classList.add('pac-man')
+// let pacman = document.querySelector(".pac-man")
+// const mouth = document.createElement('div')
+// mouth.classList.add('pacman-mouth')
+// pacman.appendChild(mouth)
 
 
 pacDotEaten()
@@ -116,7 +131,7 @@ checkForGameOver()
 checkForWin()
 
 }
-document.addEventListener('keyup', movePacman)
+document.addEventListener('keydown', movePacman)
 
 function pacDotEaten(){
 
@@ -153,10 +168,11 @@ class Ghost {
 }
 
 ghosts = [
-  new Ghost('blinky', 348, 250),
-  new Ghost('pinky', 376, 270),
-  new Ghost('inky', 351, 300),
-  new Ghost('clyde', 379, 500)
+  new Ghost('blinky', 388, 250),
+  new Ghost('pinky', 392, 270),
+  new Ghost('inky', 417, 300),
+  new Ghost('clyde', 422, 400),
+  new Ghost('bob', 391, 150 )
 ];
 
 ghosts.forEach(ghost => {
@@ -206,10 +222,11 @@ checkForGameOver()
   }
 
   function checkForWin() {
-    if (score === 250) {
+    if (score > 450) {
       ghosts.forEach(ghost => clearInterval(ghost.timerId))
       document.removeEventListener('keyup', movePacman)
       setTimeout(function(){ alert("WINNER WINNER!"); }, 500)
     }
   }
+  
 });
