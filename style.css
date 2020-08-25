@@ -1,10 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px&display=swap');
+
 body {
   background-image: url("https://images.unsplash.com/photo-1585776462170-f6f0e680e1c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
   font-family: 'Montsera', sans-serif;
   background-repeat: no-repeat;
   background-size: cover;
     color:whitesmoke;
-  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    zoom: 1.5;
+    
+}
+
+h3 {
+  font-size:40px;
+  color: gold;
+  text-shadow: 1px 2px black;
+
+
 }
 
 .grid {
@@ -14,23 +29,23 @@ body {
     width: 580px;
     height: 580px;
     border: solid black;
-    background-color: darkblue;
+    background-color:darkblue;
    
 }
 
 .grid div {
     width: 20px;
     height: 20px;
-     align-items: center;
+    align-items: center;
     
    }
 
 .pac-dot {
-
-background-color:whitesmoke;
-border: 7px solid darkblue;
 box-sizing: border-box;
-border-radius: 10px
+background-image: url('assets/pacdots.png');
+background-position: center;
+background-size: 6px;
+background-repeat: no-repeat;
 }
 
 .teleportLeft {
@@ -45,102 +60,68 @@ border-radius: 10px
     background-color: #000;
 }
 
-.power-pellet { 
-    background-color: green; 
-    border-radius: 10px;
-
+.power-pellet-paper { 
+   
+    background-position: center;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-image: url('assets/Power-ups/Toilet-paper-up.gif');
 }
 
-.blinky{
-    background-color: red;
-    border: 0px;
-    border-radius: 100% 100% 0 0;
+.power-pellet-hand { 
+   
+  background-position: center;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-image: url('assets/Power-ups/hand-sanitizer-up.gif');
+}
 
+.power-pellet-mask { 
+   
+  background-position: center;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-image: url('assets/Power-ups/mask.gif');
+}
+
+
+.blinky{
+  background-position: center;
+  background-size: cover;
+  background-image: url('assets/Ghosts/blinky.gif');
 }
 
 .pinky{
-    background-color: pink;
-    border: 0px;
-    border-radius: 100% 100% 0 0;
+    background-position: center;
+    background-size: cover;
+    background-image: url('assets/Ghosts/pinky.gif');
 }
 
 .inky{
-    background-color: cyan;
-    border: 0px;
-    border-radius: 100% 100% 0 0;
+  background-position: center;
+  background-size: cover;
+  background-image: url('assets/Ghosts/inky.gif');
 }
 .clyde{
-    background-color: orange;
-    border: 0px;
-    border-radius: 100% 100% 0 0;
-}
-
-.bob{
-  background-color: hotpink;
-  border: 0px;
-  border-radius: 100% 100% 0 0;
-
-}
+  background-position: center;
+  background-size: cover;
+  background-image: url('assets/Ghosts/clyde.gif');
+}  
 
 .scared-ghosts {
-     background-color: aquamarine;
-     border: 0px;
-     border-radius: 100% 100% 0 0;
+  background-position: center;
+  background-size: cover;
+  background-image: url('assets/Ghosts/scared ghost.gif');
     }
 
 
-    .pac-man {
-        background-color: yellow;
-       border-radius: 10px;
-       animation: chomp 0.15s linear infinite alternate;;
-      
+.pac-man {
+ border-radius: 10px;
+ background-position: center;
+ background-size: cover;
+ background-image: url('assets/ClutteredGreatIndianpalmsquirrel-small.gif');
+         
     }
 
-/* .pacman__eye {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    top: 20px;
-    right: 40px;
-    background: #333333;
-} */
-
-.pacman-mouth {
-    background-color: #000;
-    border-radius: 10%;
-    clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
-    animation-name: eat;
-    animation-duration: 0.7s;
-    animation-iteration-count: infinite;
-  }
-
-  @keyframes chomp {
-    from {
-      stroke-dasharray: 157,100;
-      stroke-dashoffset: 10;
-    }
-    to {
-      stroke-dasharray: 126,100;
-      stroke-dashoffset: -15;
-    }
-  }
 
 
-  /* @keyframes eat {
-    0% {
-      clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
-    }
-    25% {
-      clip-path: polygon(100% 60%, 44% 48%, 100% 40%);
-    }
-    50% {
-      clip-path: polygon(100% 50%, 44% 48%, 100% 50%);
-    }
-    75% {
-      clip-path: polygon(100% 59%, 44% 48%, 100% 35%);
-    }
-    100% {
-      clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
-    }
-  } */
