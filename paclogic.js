@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     1,0,1,1,1,0,1,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,1,0,1,1,1,0,1,
     1,0,0,0,0,0,0,0,1,0,1,1,1,4,4,4,1,1,1,0,1,0,0,0,0,0,0,0,1,
     1,1,1,1,1,1,1,0,4,0,1,2,2,2,2,2,2,2,1,0,4,0,1,1,1,1,1,1,1,
-    5,4,4,4,4,4,4,0,1,0,2,2,2,2,2,2,2,2,2,0,1,0,4,4,4,4,4,4,6,
-    5,4,4,4,4,4,4,0,4,0,1,2,2,2,2,2,2,2,1,0,4,0,4,4,4,4,4,4,6,
+    9,4,4,4,4,4,4,0,1,0,2,2,2,2,2,2,2,2,2,0,1,0,4,4,4,4,4,4,6,
+    5,4,4,4,4,4,4,0,4,0,1,2,2,2,2,2,2,2,1,0,4,0,4,4,4,4,4,4,10,
     1,1,1,1,1,1,1,0,1,0,1,1,1,1,4,1,1,1,1,0,1,0,1,1,1,1,1,1,1,
     1,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
     1,0,1,1,1,0,1,0,1,0,1,1,1,1,1,1,1,1,1,0,1,0,0,0,1,1,1,0,1,
@@ -39,10 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2 - ghost-lair     
   // 3 - toiletpaper (powerUp)
   // 4 - empty
-  // 5 - teleporterLeft  
+  // 5 - teleporterLeftBottom  
   // 6 -teleporterRight
   // 7 - hand sanitizer (powerUp)
   // 8 - mask (powerUp)
+  // 9 - teleporterLeftTop 
+  // 10 - teleportRightBottom
 
   const squares = []
 
@@ -62,13 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
         squares[i].classList.add('power-pellet-paper')
       }
       else if (layout[i] === 5) {
-        squares[i].classList.add('teleportLeft')
+        squares[i].classList.add('teleporterLeftBottom')
       } else if (layout[i] === 6) {
-        squares[i].classList.add('teleportRight')
+        squares[i].classList.add('teleportRightTop')
       } else if (layout[i] === 7) {
       squares[i].classList.add('power-pellet-hand')
     }else if (layout[i] === 8) {
       squares[i].classList.add('power-pellet-mask')
+    } else if (layout[i] === 9) {
+      squares[i].classList.add('teleporterLeftTop')
+    } else if (layout[i] === 10) {
+      squares[i].classList.add('teleportRightBottom')
     }
     }
   }
@@ -128,6 +134,7 @@ squares[pacmanCurrentIndex].classList.add('pac-man')
 pacDotEaten()
 powerPelletPaper()
 powerPalletHand()
+powerPalletMask()
 checkForGameOver()
 checkForWin()
 
@@ -170,6 +177,7 @@ function powerPalletMask() {
   }
 }
 
+
 function unScareGhosts() {
   ghosts.forEach(ghost => ghost.isScared = false)
 }
@@ -191,7 +199,7 @@ ghosts = [
   new Ghost('pinky', 392, 270),
   new Ghost('inky', 111, 200),
   new Ghost('clyde', 422, 400),
-  new Ghost('bob', 90, 150 ) // 391
+  new Ghost('bob', 90, 250 ) // 391
 ];
 
 ghosts.forEach(ghost => {

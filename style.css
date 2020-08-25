@@ -10,7 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    zoom: 1.5;
+    
     
 }
 
@@ -27,17 +27,20 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     width: 580px;
-    height: 580px;
+    height: 615px;
     border: solid black;
-    background-color:darkblue;
+    background-color: black;
+    background-image: url('assets/Gridelements/blackground.jfif');
+    background-position: center center;
+    background-size: 600px;
    
 }
 
 .grid div {
     width: 20px;
-    height: 20px;
+    height: 21.98px;
     align-items: center;
-    
+    margin: 0px;
    }
 
 .pac-dot {
@@ -48,16 +51,38 @@ background-size: 6px;
 background-repeat: no-repeat;
 }
 
-.teleportLeft {
-  background-image: linear-gradient(to right, red ,darkblue);
+.teleporterLeftBottom {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('assets/Gridelements/teleporterLeftBottom.gif');
+}
+.teleporterLeftTop {
+  background-position: center;
+  background-size: cover;
+  background-image: url('assets/Gridelements/teleporterLeftTop.gif');
 }
 
-.teleportRight {
-  background-image: linear-gradient(to right,darkblue, red );
+.teleportRightBottom {
+  background-position: center;
+  background-size: cover;
+  background-image: url('assets/Gridelements/teleporterRightBottom.gif');
+  margin-top: 0px
+}
+
+.teleportRightTop {
+  background-position: center;
+  background-size: cover;
+  background-image: url('assets/Gridelements/teleporterRightTop.gif');
+  margin-top: 0px
 }
 
 .wall {
-    background-color: #000;
+  
+ border-radius: 6px;
+ border-width: 1px;
+ background-color: darkblue;
+ 
 }
 
 .power-pellet-paper { 
@@ -73,13 +98,13 @@ background-repeat: no-repeat;
   background-position: center;
   background-size: 20px;
   background-repeat: no-repeat;
-  background-image: url('assets/Power-ups/hand-sanitizer-up.gif');
+  background-image: url('assets/Power-ups/hand-powerup.png');
 }
 
 .power-pellet-mask { 
    
   background-position: center;
-  background-size: 25px;
+  background-size: 21px;
   background-repeat: no-repeat;
   background-image: url('assets/Power-ups/mask.gif');
 }
@@ -104,7 +129,8 @@ background-repeat: no-repeat;
 }
 .clyde{
   background-position: center;
-  background-size: cover;
+  background-size: 22px;
+  background-repeat: no-repeat;
   background-image: url('assets/Ghosts/clyde.gif');
 }  
 
