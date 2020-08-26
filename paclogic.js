@@ -1,38 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const scoreDisplay = document.getElementById('score');
-  const width = 29;
+  const width = 36;
   let score = 0;
   const grid = document.querySelector('.grid');
   const layout = [
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,7,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,3,0,0,0,1,
-    1,0,1,1,1,0,1,0,1,0,1,1,1,8,1,0,1,1,0,1,1,1,0,1,1,1,1,0,1,
-    1,0,1,4,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1,4,0,1,0,1,
-    1,0,1,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,1,0,1,0,1,
-    1,0,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,0,0,0,1,0,1,
-    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,1,0,1,
-    1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,0,0,0,0,0,1,
-    1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,1,0,1,
-    1,0,1,1,1,0,1,0,1,0,1,1,1,4,1,4,1,1,1,0,1,0,1,0,0,0,0,0,1,
-    1,0,1,1,1,0,1,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,1,0,1,1,1,0,1,
-    1,0,0,0,0,0,0,0,1,0,1,1,1,4,4,4,1,1,1,0,1,0,0,0,0,0,0,0,1,
-    1,1,1,1,1,1,1,0,4,0,1,2,2,2,2,2,2,2,1,0,4,0,1,1,1,1,1,1,1,
-    9,4,4,4,4,4,4,0,1,0,2,2,2,2,2,2,2,2,2,0,1,0,4,4,4,4,4,4,6,
-    5,4,4,4,4,4,4,0,4,0,1,2,2,2,2,2,2,2,1,0,4,0,4,4,4,4,4,4,10,
-    1,1,1,1,1,1,1,0,1,0,1,1,1,1,4,1,1,1,1,0,1,0,1,1,1,1,1,1,1,
-    1,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-    1,0,1,1,1,0,1,0,1,0,1,1,1,1,1,1,1,1,1,0,1,0,0,0,1,1,1,0,1,
-    1,0,1,1,1,0,1,0,1,0,1,0,0,0,4,0,0,0,1,0,1,0,1,0,0,1,1,0,1,
-    1,0,0,0,0,0,1,0,1,0,1,0,1,1,1,1,1,0,1,0,1,0,0,1,0,0,1,0,1,
-    1,0,1,1,1,1,1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,1,0,0,1,0,0,0,1,
-    1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,1,1,0,1,
-    1,0,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,0,0,0,1,
-    1,3,0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,1,0,0,1,7,1,0,1,
-    1,0,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,1,1,0,0,0,0,0,1,
-    1,0,1,1,1,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,1,1,1,1,0,1,
-    1,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1,0,0,0,0,1,0,0,0,0,0,0,0,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,
+    1,0,1,1,1,1,1,0,1,0,8,1,0,0,1,0,0,1,1,0,0,1,0,0,1,0,0,1,0,1,0,1,1,1,0,1,
+    1,0,0,0,2,2,1,0,0,1,0,0,1,0,0,1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,0,1,11,1,0,1,
+    1,0,1,0,1,1,1,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,1,0,1,0,1,0,1,
+    1,0,1,0,0,0,0,0,11,0,0,1,0,0,1,0,0,0,0,0,0,1,3,0,1,0,0,0,0,0,0,0,0,1,0,1,
+    1,0,1,0,1,1,1,0,1,1,0,0,1,0,0,0,1,1,1,1,0,0,0,1,0,0,1,1,0,1,1,1,0,1,0,1,
+    1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,
+    1,1,1,1,0,0,0,1,1,1,0,0,1,1,1,2,2,2,2,2,2,1,1,1,0,0,1,1,1,0,0,0,1,1,1,1,
+    9,4,4,4,4,1,0,4,0,0,0,0,1,2,2,2,2,2,2,2,2,2,2,1,0,0,0,0,0,0,1,0,4,4,4,6,
+    5,4,4,4,0,1,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,11,2,0,0,0,0,1,0,4,4,4,10,
+    1,1,1,1,0,0,0,1,1,1,3,4,2,2,2,2,2,2,4,4,4,4,2,2,0,0,1,1,1,0,0,0,1,1,1,1,
+    1,0,0,0,0,0,0,0,0,1,0,0,1,2,2,2,2,2,2,2,2,2,2,1,0,0,1,0,0,0,0,0,0,0,0,1,
+    1,4,1,1,1,1,11,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,0,1,
+    1,4,1,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,
+    1,0,1,0,1,0,1,0,0,0,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,1,0,0,0,1,0,1,0,1,0,1,
+    1,0,0,8,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,7,0,1,0,0,0,0,0,0,1,8,0,0,0,0,1,
+    1,0,1,1,1,1,1,0,1,1,1,1,0,1,0,0,1,0,0,1,0,0,1,0,1,1,1,1,11,1,1,1,1,1,0,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
  ];
   // 0 - pac-dots       
   // 1 - wall
@@ -45,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 8 - mask (powerUp)
   // 9 - teleporterLeftTop 
   // 10 - teleportRightBottom
+
+
+  //BUILD BOARD
 
   const squares = []
 
@@ -62,19 +57,20 @@ document.addEventListener('DOMContentLoaded', () => {
         squares[i].classList.add('ghost-lair')
       } else if (layout[i] === 3) {
         squares[i].classList.add('power-pellet-paper')
-      }
-      else if (layout[i] === 5) {
+      } else if (layout[i] === 5) {
         squares[i].classList.add('teleporterLeftBottom')
       } else if (layout[i] === 6) {
         squares[i].classList.add('teleportRightTop')
       } else if (layout[i] === 7) {
       squares[i].classList.add('power-pellet-hand')
-    }else if (layout[i] === 8) {
+      } else if (layout[i] === 8) {
       squares[i].classList.add('power-pellet-mask')
-    } else if (layout[i] === 9) {
+      } else if (layout[i] === 9) {
       squares[i].classList.add('teleporterLeftTop')
-    } else if (layout[i] === 10) {
+      } else if (layout[i] === 10) {
       squares[i].classList.add('teleportRightBottom')
+      } else if (layout[i] === 11) {
+      squares[i].classList.add('power-pellet-covid')
     }
     }
   }
@@ -82,8 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   createBoard()
 
+// PACMAN
 
-let pacmanCurrentIndex = 536  //536
+let pacmanCurrentIndex = 522  //536
 
 squares[pacmanCurrentIndex].classList.add('pac-man')
 
@@ -92,6 +89,7 @@ return [index % width, Math.floor(index / width)]
   }
 console.log(getCoordinates(pacmanCurrentIndex))
 
+// MOVEMENT
 
 function movePacman(e) {
 
@@ -105,8 +103,8 @@ switch(e.keyCode) {
     && !squares[pacmanCurrentIndex -1].classList.contains('ghost-lair'))
     pacmanCurrentIndex -=1
 
-    if((pacmanCurrentIndex - 1) === 377) {pacmanCurrentIndex = 434}
-    if((pacmanCurrentIndex - 1) === 406) {pacmanCurrentIndex = 405}
+    if((pacmanCurrentIndex - 1) === 507) {pacmanCurrentIndex = 544}
+    if((pacmanCurrentIndex - 1) === 544) {pacmanCurrentIndex = 507}
     break
   case 38:
     if(pacmanCurrentIndex - width >= 0 && !squares[pacmanCurrentIndex -width].classList.contains('wall')
@@ -131,15 +129,18 @@ switch(e.keyCode) {
 squares[pacmanCurrentIndex].classList.add('pac-man')
 
 
-pacDotEaten()
+
 powerPelletPaper()
-powerPalletHand()
-powerPalletMask()
-checkForGameOver()
-checkForWin()
+powerPelletHand()
+powerPelletMask()
+powerPelletCovid()
+
 
 }
 document.addEventListener('keydown', movePacman)
+
+
+//POWERUPS AND DEBUFFS
 
 function pacDotEaten(){
 
@@ -149,39 +150,58 @@ function pacDotEaten(){
     squares[pacmanCurrentIndex].classList.remove('pac-dot')
   }
 }
+pacDotEaten()
+
 
 function powerPelletPaper() {
   if (squares[pacmanCurrentIndex].classList.contains('power-pellet-paper')) {
-    score +=10
+    score +=50
     ghosts.forEach(ghost => ghost.isScared = true)
     setTimeout(unScareGhosts, 10000);
     squares[pacmanCurrentIndex].classList.remove('power-pellet-paper')
   }
 }
 
-function powerPalletHand() {
+function powerPelletHand() {
   if (squares[pacmanCurrentIndex].classList.contains('power-pellet-hand')) {
-    score +=10
+    score += 50
     ghosts.forEach(ghost => ghost.isScared = true)
     setTimeout(unScareGhosts, 10000);
     squares[pacmanCurrentIndex].classList.remove('power-pellet-hand')
   }
 }
 
-function powerPalletMask() {
+function powerPelletMask() {
   if (squares[pacmanCurrentIndex].classList.contains('power-pellet-mask')) {
-    score +=10
+    score += 50
     ghosts.forEach(ghost => ghost.isScared = true)
     setTimeout(unScareGhosts, 10000);
     squares[pacmanCurrentIndex].classList.remove('power-pellet-mask')
   }
 }
 
+function powerPelletCovid() {
+  if (squares[pacmanCurrentIndex].classList.contains('power-pellet-covid')) {
+    score -=100
+    ghosts.forEach(ghost => ghost.isFast = true)
+    setTimeout(isNotFast, 10000);
+    squares[pacmanCurrentIndex].classList.remove('power-pellet-covid')
+  }
+}
 
 function unScareGhosts() {
   ghosts.forEach(ghost => ghost.isScared = false)
 }
 
+function isNotFast() {
+  ghosts.forEach(ghost => ghost.isFast = false)
+}
+
+function isFast() {
+  ghosts.forEach(ghost.speed += 100)
+}
+
+// GHOSTS
 
 class Ghost {
   constructor(className, startIndex, speed) {
@@ -191,14 +211,15 @@ class Ghost {
   this.currentIndex = startIndex;
   this.timerId = NaN;
   this.isScared = false;
+  this.isFast = false;
   }
 }
 
 ghosts = [
-  new Ghost('blinky', 388, 250),
-  new Ghost('pinky', 392, 270),
-  new Ghost('inky', 111, 200),
-  new Ghost('clyde', 422, 400),
+  new Ghost('blinky', 410, 250),
+  new Ghost('pinky', 416, 270),
+  new Ghost('inky', 380, 200),
+  new Ghost('clyde', 375, 400),
   new Ghost('bob', 90, 250 ) // 391
 ];
 
@@ -239,6 +260,7 @@ checkForGameOver()
  }, ghost.speed)
   }
 
+  // WIN/LOSE LOGIC
   function checkForGameOver() {
     if (squares[pacmanCurrentIndex].classList.contains('ghost') &&
       !squares[pacmanCurrentIndex].classList.contains('scared-ghosts')) {
@@ -249,11 +271,12 @@ checkForGameOver()
   }
 
   function checkForWin() {
-    if (score > 400) {
+    if (score > 550) {
       ghosts.forEach(ghost => clearInterval(ghost.timerId))
       document.removeEventListener('keydown', movePacman)
       setTimeout(function(){ alert("WINNER WINNER!"); }, 500)
     }
   }
-  
+  checkForGameOver()
+checkForWin()
 });
