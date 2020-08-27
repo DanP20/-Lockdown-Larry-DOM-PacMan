@@ -197,13 +197,10 @@ background-repeat: no-repeat;
     transform: rotate(0deg)
   }
 
-  .Start {
-    position:absolute;
-    display: flex;
-  }
+.howtoplay {
 
-  .end {
-    display:none;
-  }
-
-
+  
+  height: 650px;
+  border-radius: 50px;
+ 
+};

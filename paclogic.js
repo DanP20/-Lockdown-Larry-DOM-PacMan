@@ -2,7 +2,8 @@ document.querySelector(".grid").style.display="none"
 document.querySelector("#start").onclick = function(){
   document.querySelector(".grid").style.display="inherit"
   document.querySelector("#start").remove();
-  start()
+  document.querySelector('.howtoplay').remove();
+  start();
 
 }
 
