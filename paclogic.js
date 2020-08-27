@@ -1,12 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  const scoreDisplay = document.getElementById('score');
+
+  //AUDIO
+
   const gameOver = document.getElementById("gameOver");
   const gameWin = document.getElementById("win");
   const powerUp = document.getElementById("powerUp");
   const move = document.getElementById("move");
   const gameMusic = document.getElementById("gameMusic");
   const covidCollect = document.getElementById("covidPellet");
+
+  //GRID
+  const scoreDisplay = document.getElementById('score');
   const width = 36;
   let score = 0;
   const grid = document.querySelector('.grid');
@@ -115,43 +120,52 @@ function movePacman(e) {
 
 
 squares[pacmanCurrentIndex].classList.remove('pac-man')
+squares[pacmanCurrentIndex].classList.remove('left')
+squares[pacmanCurrentIndex].classList.remove('right')
+squares[pacmanCurrentIndex].classList.remove('up')
+squares[pacmanCurrentIndex].classList.remove('down')
+
 
 switch(e.keyCode) {
   
   case 37:
     if(pacmanCurrentIndex % width !== 0 && !squares[pacmanCurrentIndex -1].classList.contains('wall')
     && !squares[pacmanCurrentIndex -1].classList.contains('ghost-lair'))
-    pacmanCurrentIndex -=1
-
+    pacmanCurrentIndex -=1;
     if((pacmanCurrentIndex - 1) === 324) {pacmanCurrentIndex = 359}
     if((pacmanCurrentIndex - 1) === 360) {pacmanCurrentIndex = 395}
-    break
+
+    squares[pacmanCurrentIndex].classList.add('left')
+
+    break;
   case 38:
     if(pacmanCurrentIndex - width >= 0 && !squares[pacmanCurrentIndex -width].classList.contains('wall')
     && !squares[pacmanCurrentIndex -width].classList.contains('ghost-lair'))
-    pacmanCurrentIndex -= width
-    break
+    pacmanCurrentIndex -= width;
+
+    squares[pacmanCurrentIndex].classList.add('up')
+
+    break;
   case 39:
     if(pacmanCurrentIndex % width < width -1 && !squares[pacmanCurrentIndex +1].classList.contains('wall')
     && !squares[pacmanCurrentIndex +1].classList.contains('ghost-lair'))
-    pacmanCurrentIndex +=1
-
+    pacmanCurrentIndex +=1;
     if((pacmanCurrentIndex +1)  === 359) {pacmanCurrentIndex = 324}
     if((pacmanCurrentIndex +1)  === 395) {pacmanCurrentIndex = 360}
+
+    squares[pacmanCurrentIndex].classList.add('right')
+
     break;
   case 40:
     if(pacmanCurrentIndex + width < width * width && !squares[pacmanCurrentIndex +width].classList.contains('wall')
     && !squares[pacmanCurrentIndex + width].classList.contains('ghost-lair'))
-    pacmanCurrentIndex += width
-    break
+    pacmanCurrentIndex += width;
+
+    squares[pacmanCurrentIndex].classList.add('down')
+    break;
 
 }
-
-
-
-
 squares[pacmanCurrentIndex].classList.add('pac-man')
-
 
 
 powerPelletPaper()
@@ -166,13 +180,10 @@ if (gameTheme) {
   gameMusic.pause();
   gameMusic.currentPlayTime = 0;
   gameMusic.play();
-  gameMusic.volume = 0.2;
+  gameMusic.volume = 0.5;
  gameMusic = false;
   }
-  if (score > 50) {
-    gameTheme === false;
-  }
-
+  
 }
 document.addEventListener('keydown', movePacman)
 
@@ -189,12 +200,12 @@ function pacDotEaten(){
     if (pacmanMove) {
       move.pause();
       move.currentPlayTime= 0;
+      gameMusic.volume = 0.8;
       move.play();
       pacmanMove = false;
     }
   }
-  
-  
+
 }
 
 
@@ -310,14 +321,12 @@ ghosts.forEach(ghost => moveGhost(ghost))
 
   function moveGhost(ghost) {
 
-    const ghostsSiren = true;
     const directions =  [-1, +1, width, -width]
-    let direction = directions[Math.floor(Math.random() * directions.length)]
-   
+    let direction = directions[Math.floor(Math.random() * directions.length)]  
 
   
  ghost.timerId = setInterval(function() {
-
+  const powerUpEaten = true;
   if  (!squares[ghost.currentIndex + direction].classList.contains('ghost') &&
         !squares[ghost.currentIndex + direction].classList.contains('wall') ) {
           squares[ghost.currentIndex].classList.remove(ghost.className)
@@ -334,9 +343,13 @@ ghosts.forEach(ghost => moveGhost(ghost))
         ghost.currentIndex = ghost.startIndex
         score +=100
         squares[ghost.currentIndex].classList.add(ghost.className, 'ghost')
+        if (powerUpEaten) {
+          powerUp.pause();
+          powerUp.currentTime = 0;
+          powerUp.play();
+          powerUpEaten = false;
+        }
       }
-
-  
 
 checkForGameOver()
 
@@ -350,7 +363,7 @@ checkForGameOver()
       !squares[pacmanCurrentIndex].classList.contains('scared-ghosts')) {
       ghosts.forEach(ghost => clearInterval(ghost.timerId))
       document.removeEventListener('keydown', movePacman)
-      setTimeout(function(){ alert("Game Over"); }, 500)
+      setTimeout(function(){ alert("Game Over! Lockdown in effect"); }, 500)
       if (pacmanDead) {
         gameOver.pause();
         gameOver.currentTime = 0;
@@ -363,10 +376,10 @@ checkForGameOver()
 
   function checkForWin() {
     const pacmanWin = true;
-    if (score > 800) {
+    if (score > 850) {
       ghosts.forEach(ghost => clearInterval(ghost.timerId))
       document.removeEventListener('keydown', movePacman)
-      setTimeout(function(){ alert("WINNER WINNER!"); }, 500)
+      setTimeout(function(){ alert("YOU SAVED THE ECONOMY"); }, 500)
       if (pacmanWin) {
         gameWin.pause() ;
         gameWin.currentTime = 0;
@@ -375,6 +388,5 @@ checkForGameOver()
       }
     }
   }
- 
- 
+
 });
