@@ -73,6 +73,7 @@ function start(){
       grid.appendChild(square)
       squares.push(square)
 
+
       if(layout[i] === 0) {
         squares[i].classList.add('pac-dot')
       } else if (layout[i] === 1) {
@@ -80,7 +81,7 @@ function start(){
       } else if (layout[i] === 2) {
         squares[i].classList.add('ghost-lair')
       } else if (layout[i] === 3) {
-        squares[i].classList.add('power-pellet-paper')
+        squares[i].classList.add('power-pellet-paper');
       } else if (layout[i] === 5) {
         squares[i].classList.add('teleporterLeftBottom')
       } else if (layout[i] === 6) {
@@ -127,11 +128,11 @@ function movePacman(e) {
   let gameTheme = true;
 
 
-squares[pacmanCurrentIndex].classList.remove('pac-man')
-squares[pacmanCurrentIndex].classList.remove('left')
-squares[pacmanCurrentIndex].classList.remove('right')
-squares[pacmanCurrentIndex].classList.remove('up')
-squares[pacmanCurrentIndex].classList.remove('down')
+squares[pacmanCurrentIndex].classList.remove('pac-man');
+squares[pacmanCurrentIndex].classList.remove('left');
+squares[pacmanCurrentIndex].classList.remove('right');
+squares[pacmanCurrentIndex].classList.remove('up');
+squares[pacmanCurrentIndex].classList.remove('down');
 
 
 switch(e.keyCode) {
@@ -161,7 +162,7 @@ switch(e.keyCode) {
     if((pacmanCurrentIndex +1)  === 359) {pacmanCurrentIndex = 324}
     if((pacmanCurrentIndex +1)  === 395) {pacmanCurrentIndex = 360}
 
-    squares[pacmanCurrentIndex].classList.add('right')
+    squares[pacmanCurrentIndex].classList.add('right');
 
     break;
   case 40:
@@ -169,11 +170,11 @@ switch(e.keyCode) {
     && !squares[pacmanCurrentIndex + width].classList.contains('ghost-lair'))
     pacmanCurrentIndex += width;
 
-    squares[pacmanCurrentIndex].classList.add('down')
+    squares[pacmanCurrentIndex].classList.add('down');
     break;
 
 }
-squares[pacmanCurrentIndex].classList.add('pac-man')
+squares[pacmanCurrentIndex].classList.add('pac-man');
 
 
 powerPelletPaper()
