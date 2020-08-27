@@ -1,14 +1,21 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.querySelector(".grid").style.display="none"
+document.querySelector("#start").onclick = function(){
+  document.querySelector(".grid").style.display="inherit"
+  document.querySelector("#start").remove();
+  start()
 
+}
 
   //AUDIO
+function start(){
 
-  const gameOver = document.getElementById("gameOver");
-  const gameWin = document.getElementById("win");
-  const powerUp = document.getElementById("powerUp");
-  const move = document.getElementById("move");
-  const gameMusic = document.getElementById("gameMusic");
-  const covidCollect = document.getElementById("covidPellet");
+
+  let gameOver = document.getElementById("gameOver");
+  let gameWin = document.getElementById("win");
+  let powerUp = document.getElementById("powerUp");
+  let move = document.getElementById("move");
+  let gameMusic = document.getElementById("gameMusic");
+  let covidCollect = document.getElementById("covidPellet");
 
   //GRID
   const scoreDisplay = document.getElementById('score');
@@ -116,7 +123,7 @@ console.log(getCoordinates(pacmanCurrentIndex))
 
 function movePacman(e) {
 
-  const gameTheme = true;
+  let gameTheme = true;
 
 
 squares[pacmanCurrentIndex].classList.remove('pac-man')
@@ -389,4 +396,4 @@ checkForGameOver()
     }
   }
 
-});
+}
