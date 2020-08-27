@@ -3,6 +3,7 @@
 body {
   background-image: url("assets/Gridelements/wallpaper.jpg");
   font-family: 'Montsera', sans-serif;
+  
   background-repeat: no-repeat;
   background-size: cover;
   im: 20px;
@@ -11,8 +12,14 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
 }
+
+section {
+  display: flex;
+  flex direction: row;
+}
+
+
 
 h3 {
   font-size:40px;
@@ -31,6 +38,7 @@ h3 {
     border: solid black;
     background-color: black;
     background-image: url('assets/Gridelements/blackground.jfif');
+    opacity: 0.9;
     background-position:center;
     background-repeat: no-repeat;
     background-size: 600px;

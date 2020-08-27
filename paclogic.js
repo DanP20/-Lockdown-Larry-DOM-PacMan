@@ -2,9 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const scoreDisplay = document.getElementById('score');
   const gameOver = document.getElementById("gameOver");
+  const gameWin = document.getElementById("win");
   const powerUp = document.getElementById("powerUp");
   const move = document.getElementById("move");
   const gameMusic = document.getElementById("gameMusic");
+  const covidCollect = document.getElementById("covidPellet");
   const width = 36;
   let score = 0;
   const grid = document.querySelector('.grid');
@@ -18,14 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
     1,0,1,0,1,1,1,0,1,1,0,0,1,0,0,0,1,1,1,1,0,0,0,1,0,0,1,1,0,1,1,1,0,1,0,1,
     1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,
     1,1,1,1,0,0,0,1,1,1,0,0,1,1,1,2,2,2,2,2,2,1,1,1,0,0,1,1,1,0,0,0,1,1,1,1,
-    9,4,4,4,4,1,0,4,0,0,0,0,1,2,2,2,2,2,2,2,2,2,2,1,0,0,0,0,0,0,1,11,4,4,4,6,
+    9,4,4,4,4,1,0,0,0,0,0,0,1,2,2,2,2,2,2,2,2,2,2,1,0,0,0,0,0,0,1,11,4,4,4,6,
     5,4,4,4,0,1,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,1,0,4,4,4,10,
     1,1,1,1,0,0,0,1,1,1,0,0,2,2,2,2,2,2,4,4,4,4,2,2,0,0,1,1,1,0,0,0,1,1,1,1,
     1,0,0,0,0,0,0,0,3,1,0,0,1,2,2,2,2,2,2,2,2,2,2,1,0,0,1,0,0,0,0,0,0,0,0,1,
-    1,4,1,1,1,1,11,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,0,1,
-    1,4,1,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,
+    1,0,1,1,1,1,11,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,0,1,
+    1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,
     1,0,1,0,1,0,1,0,0,0,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,1,0,0,0,1,0,1,0,1,0,1,
-    1,0,0,8,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,7,0,1,0,0,0,0,0,0,1,8,0,0,0,0,1,
+    1,0,0,8,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,7,0,1,0,0,0,0,1,0,1,8,0,0,0,0,1,
     1,0,1,1,1,1,1,0,1,1,1,1,0,1,0,0,1,0,0,1,0,0,1,0,1,1,1,1,11,1,1,1,1,1,0,1,
     1,0,0,0,0,0,0,0,0,0,0,0,0,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
@@ -114,7 +116,6 @@ function movePacman(e) {
 
 squares[pacmanCurrentIndex].classList.remove('pac-man')
 
-
 switch(e.keyCode) {
   
   case 37:
@@ -137,7 +138,7 @@ switch(e.keyCode) {
 
     if((pacmanCurrentIndex +1)  === 359) {pacmanCurrentIndex = 324}
     if((pacmanCurrentIndex +1)  === 395) {pacmanCurrentIndex = 360}
-    break
+    break;
   case 40:
     if(pacmanCurrentIndex + width < width * width && !squares[pacmanCurrentIndex +width].classList.contains('wall')
     && !squares[pacmanCurrentIndex + width].classList.contains('ghost-lair'))
@@ -160,11 +161,16 @@ powerPelletCovid()
 pacDotEaten()
 checkForGameOver()
 checkForWin()
+
 if (gameTheme) {
   gameMusic.pause();
   gameMusic.currentPlayTime = 0;
   gameMusic.play();
+  gameMusic.volume = 0.2;
  gameMusic = false;
+  }
+  if (score > 50) {
+    gameTheme === false;
   }
 
 }
@@ -245,12 +251,19 @@ function powerPelletMask() {
 }
 
 function powerPelletCovid() {
+  const powerupCovid = true;
   if (squares[pacmanCurrentIndex].classList.contains('power-pellet-covid')) {
     score -=100
     scoreDisplay.innerHTML=score;
     // ghosts.forEach(ghost => ghost.isFast = true)
     // setTimeout(isNotFast, 10000);
     squares[pacmanCurrentIndex].classList.remove('power-pellet-covid')
+    if (powerupCovid) {
+      covidCollect.pause();
+      covidCollect.currentTime = 0;
+      covidCollect.play();
+      powerupCovid = false;
+    }
   }
 }
 
@@ -281,11 +294,11 @@ class Ghost {
 }
 
 ghosts = [
-  new Ghost('blinky', 411, 330),
-  new Ghost('pinky', 416, 370),
-  new Ghost('inky', 380, 300),
-  new Ghost('clyde', 375, 250),
-  new Ghost('bob', 450, 370 ) // 391
+  new Ghost('blinky', 411, 190),
+  new Ghost('pinky', 416, 210),
+  new Ghost('inky', 380, 150),
+  new Ghost('clyde', 375, 350),
+  new Ghost('bob', 450, 170 ) // 391
 ];
 
 ghosts.forEach(ghost => {
@@ -323,11 +336,7 @@ ghosts.forEach(ghost => moveGhost(ghost))
         squares[ghost.currentIndex].classList.add(ghost.className, 'ghost')
       }
 
-      //  if (ghostsSiren) {
-      //  ghostsMove.pause();
-      //   ghostsMove.play();
-      //    ghostsSiren = false;
-      //  }
+  
 
 checkForGameOver()
 
@@ -348,14 +357,22 @@ checkForGameOver()
         gameOver.play();
         pacmanDead = false;
       }
+      
     }
   }
 
   function checkForWin() {
-    if (score > 900) {
+    const pacmanWin = true;
+    if (score > 800) {
       ghosts.forEach(ghost => clearInterval(ghost.timerId))
       document.removeEventListener('keydown', movePacman)
       setTimeout(function(){ alert("WINNER WINNER!"); }, 500)
+      if (pacmanWin) {
+        gameWin.pause() ;
+        gameWin.currentTime = 0;
+        gameWin.play() ;
+        pacmanWin = false;
+      }
     }
   }
  
