@@ -186,11 +186,10 @@ checkForGameOver()
 checkForWin()
 
 if (gameTheme) {
-  gameMusic.pause();
   gameMusic.currentPlayTime = 0;
   gameMusic.play();
   gameMusic.volume = 0.5;
- gameMusic = false;
+  gameTheme = false;
   }
   
 }
@@ -200,7 +199,7 @@ document.addEventListener('keydown', movePacman)
 //POWERUPS AND DEBUFFS
 
 function pacDotEaten(){
-  const pacmanMove = true;
+ let pacmanMove = true;
 
   if(squares[pacmanCurrentIndex].classList.contains('pac-dot')) {
     score++
@@ -220,7 +219,7 @@ function pacDotEaten(){
 
 
 function powerPelletPaper() { 
-  const powerUpEaten = true;
+  let powerUpEaten = true;
   if (squares[pacmanCurrentIndex].classList.contains('power-pellet-paper')) {
     score +=50
     scoreDisplay.innerHTML=score;
@@ -237,7 +236,7 @@ function powerPelletPaper() {
 }
 
 function powerPelletHand() {
-  const powerUpEaten = true;
+  let powerUpEaten = true;
   if (squares[pacmanCurrentIndex].classList.contains('power-pellet-hand')) {
     score += 50
     scoreDisplay.innerHTML=score;
@@ -254,7 +253,7 @@ function powerPelletHand() {
 }
 
 function powerPelletMask() {
-  const powerUpEaten = true;
+  let powerUpEaten = true;
   if (squares[pacmanCurrentIndex].classList.contains('power-pellet-mask')) {
     score += 50
     scoreDisplay.innerHTML=score;
@@ -271,7 +270,7 @@ function powerPelletMask() {
 }
 
 function powerPelletCovid() {
-  const powerupCovid = true;
+  let powerupCovid = true;
   if (squares[pacmanCurrentIndex].classList.contains('power-pellet-covid')) {
     score -=100
     scoreDisplay.innerHTML=score;
@@ -335,7 +334,7 @@ ghosts.forEach(ghost => moveGhost(ghost))
 
   
  ghost.timerId = setInterval(function() {
-  const powerUpEaten = true;
+  let powerUpEaten = true;
   if  (!squares[ghost.currentIndex + direction].classList.contains('ghost') &&
         !squares[ghost.currentIndex + direction].classList.contains('wall') ) {
           squares[ghost.currentIndex].classList.remove(ghost.className)
@@ -367,7 +366,7 @@ checkForGameOver()
 
   // WIN/LOSE LOGIC
   function checkForGameOver()
-  { const pacmanDead = true;
+  { let pacmanDead = true;
     if (squares[pacmanCurrentIndex].classList.contains('ghost') &&
       !squares[pacmanCurrentIndex].classList.contains('scared-ghosts')) {
       ghosts.forEach(ghost => clearInterval(ghost.timerId))
@@ -384,7 +383,7 @@ checkForGameOver()
   }
 
   function checkForWin() {
-    const pacmanWin = true;
+    let pacmanWin = true;
     if (score > 850) {
       ghosts.forEach(ghost => clearInterval(ghost.timerId))
       document.removeEventListener('keydown', movePacman)
